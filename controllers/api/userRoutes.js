@@ -5,16 +5,27 @@ const { User } = require('../../models');
 // If a POST request is made to /api/users, a new user is created. The user id and logged in state is saved to the session within the request object.
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const { name, email, password } = req.body;
 
+    // Ensure all required fields are present
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    // Create a new user
+    const userData = await User.create({ name, email, password });
+
+    // Save user ID and logged-in state to session
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
+      
       res.status(200).json(userData);
     });
   } catch (err) {
-    res.status(400).json(err);
+    // Handle validation errors or other issues
+    console.error('Error creating user:', err);
+    res.status(400).json({ message: 'Failed to sign up. Please try again.' });
   }
 });
 

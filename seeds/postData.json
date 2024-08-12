@@ -1,0 +1,32 @@
+[
+  {
+      "title": "Exploring JSON in JavaScript",
+      "description": "A comprehensive guide to understanding and working with JSON in JavaScript.",
+      "date_created": "2024-08-01T14:30:00Z",
+      "user_id": 1
+  },
+  {
+      "title": "Introduction to Machine Learning",
+      "description": "An overview of the basics of machine learning and its applications in various fields.",
+      "date_created": "2024-08-05T09:00:00Z",
+      "user_id": 2
+  },
+  {
+      "title": "10 Tips for Effective Time Management",
+      "description": "Strategies and tips to help you manage your time more effectively and increase productivity.",
+      "date_created": "2024-08-10T16:45:00Z",
+      "user_id": 3
+  },
+  {
+      "title": "The Future of Web Development",
+      "description": "Insights into emerging trends and technologies that are shaping the future of web development.",
+      "date_created": "2024-08-12T11:15:00Z",
+      "user_id": 1
+  },
+  {
+      "title": "Healthy Eating Habits",
+      "description": "Guidelines and advice for maintaining a balanced diet and promoting overall health.",
+      "date_created": "2024-08-15T08:30:00Z",
+      "user_id": 2
+  }
+]

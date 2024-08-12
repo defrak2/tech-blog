@@ -1,0 +1,10 @@
+<div class="text-center">
+  <h2>{{title}}</h2>
+  <p>{{description}}</p>
+  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  {{#if logged_in}}
+      <div>
+      <button data-id"{{id}}">Comment</button>
+    </div>
+  {{/if}}
+</div>
