@@ -3,10 +3,12 @@ const router = require('express').Router();
 const userRoutes = require('./userRoutes');
 const postRoutes = require('./postRoutes');
 const commentRoutes = require('./commentRoutes')
+const currentuserRoutes = require('./currentuserRoutes')
 
 // When a request is made to the /users or /projects path, it will be directed to the index.js in the /users or /projects folder.
 router.use('/users', userRoutes);
 router.use('/post', postRoutes);
-router.use('/comment', commentRoutes);
+router.use('/comments', commentRoutes);
+router.use('/current-user', currentuserRoutes)
 
 module.exports = router;

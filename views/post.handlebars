@@ -3,36 +3,19 @@
   <p>{{description}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
 
-  {{#if logged_in}}
-    <div>
-      <button class="comment-btn" data-id="{{id}}">Comment</button>
-    </div>
-  {{/if}}
 </div>
 
 <!-- Display Comments -->
-{{#each comments as |comment|}}
-  <div class="comment">
-    <p>{{comment.message}}</p>
-    <p>By {{comment.user.name}} on {{format_date comment.date_created}}</p>
-  </div>
-{{/each}}
-
-<!-- Hidden Comment Form Template -->
-<div class="comment-form-container" id="comment-form-{{id}}" style="display: none;">
-  <div class="field">
-    <label class="label">Message</label>
-    <div class="control">
-      <textarea class="textarea" placeholder="Textarea"></textarea>
-    </div>
-  </div>
-
-  <div class="field is-grouped">
-    <div class="control">
-      <button class="button is-link submit-comment">Submit</button>
-    </div>
-    <div class="control">
-      <button class="button is-link is-light cancel-comment">Cancel</button>
-    </div>
-  </div>
+<div id="comments-container-{{post.id}}">
+  {{#if post.comments.length}}
+    {{#each post.comments as |comment|}}
+      <div class="comment">
+        <p>{{comment.message}}</p>
+        <p>By {{comment.user.name}} on {{format_date comment.date_created}}</p>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>No comments yet.</p>
+  {{/if}}
 </div>
+

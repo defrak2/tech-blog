@@ -4,61 +4,61 @@
   </div>
 </div>
 
-<!-- Loop over each object in the projects array -->
-{{#each posts as |post| }}
+<!-- Loop over each object in the posts array -->
+{{#each posts as |post|}}
 <div class="row mb-4 project">
   <div class="col-md-5">
-    <p>
+    <div class="text-center">
+      <h2>{{post.title}}</h2>
+      <p>{{post.description}}</p>
+      <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
 
 
-      <a href="/post/{{post.id}}">{{post.title}}</a>
-      
-    </p>
-    <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
+        <div>
+          <button class="button is-link js-modal-trigger" data-target="modal-{{post.id}}">
+            Add a comment here
+          </button>
+        </div>
 
-<button class="js-modal-trigger" data-target="modal-js-example">
-  Add a comment here
-</button>
+    </div>
 
+    <!-- Display Comments -->
+    <div id="comments-container-{{post.id}}">
+      {{#if post.comments.length}}
+        {{#each post.comments as |comment|}}
+          <div class="comment">
+            <p>{{comment.message}}</p>
+            <p>By {{comment.user.name}} on {{format_date comment.date_created}}</p>
+          </div>
+        {{/each}}
+      {{else}}
+        <p>No comments yet.</p>
+      {{/if}}
+    </div>
 
-
-
-
-
-
-
-<div id="modal-js-example" class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Add Comment Below...</p>
-      <button class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-      <textarea class="textarea" placeholder="e.g. Hello world"></textarea>
-    </section>
-    <footer class="modal-card-foot">
-      <div class="buttons">
-        <button class="button is-success">Save Comment</button>
-        <button class="button">Cancel</button>
+    <!-- Bulma Modal for Comment Form -->
+    <div class="modal" id="modal-{{post.id}}">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Add Comment Below...</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <textarea class="textarea" placeholder="e.g. Hello world"></textarea>
+        </section>
+        <footer class="modal-card-foot">
+          <div class="buttons">
+            <button class="button is-success submit-comment" data-id="{{post.id}}">Save Comment</button>
+            <button class="button cancel-comment">Cancel</button>
+          </div>
+        </footer>
       </div>
-    </footer>
+    </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-  </div>
-</div>
-
 {{/each}}
 
-
 <script src="./js/profile.js"></script>
-
 <script src="./js/modal.js"></script>
+<script src="./js/comment.js"></script>
