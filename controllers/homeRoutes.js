@@ -1,4 +1,4 @@
-const { Post, User } = require('../models');
+const { Comment, Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 const router = require('express').Router();
 
@@ -9,7 +9,16 @@ router.get('/', async (req, res) => {
             {
                 model: User,
                 attributes: ['name']
-            }
+            },
+            {
+                model: Comment,
+                include: [
+                    {
+                        model: User,
+                        attributes: ['name'],
+                    }
+                ],
+            },
         ]
     });
     const posts = postData.map((post) => post.get({plain: true}));
@@ -68,6 +77,16 @@ router.get('/profile', withAuth, async (req, res) => {
     }
   
     res.render('login');
+  });
+
+  router.get('/signup', (req, res) => {
+    // If the user is already logged in, redirect the request to another route
+    if (req.session.logged_in) {
+      res.redirect('/profile');
+      return;
+    }
+  
+    res.render('signup');
   });
 
 module.exports = router;

@@ -7,6 +7,11 @@
   <title>Tech Blog</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+>
+  
 </head>
 
 <body>
@@ -22,6 +27,8 @@
         {{else}}
         <a href="/login"><button class ="no-button" id="dashboard">Dashboard</button></a> |
         {{/if}}
+
+        <a href="/signup"><button class="no-button" id="signup">Sign Up</button></a> |
         
         {{#if logged_in}}
         <a href="/login"><button class="no-button" id="logout">Logout</button></a> 
@@ -29,6 +36,9 @@
         {{else}}
         <a href="/login"><button class="no-button" id="login">Login</button></a> 
         {{/if}}
+
+
+
       </nav>     
       
       <h1>
@@ -45,8 +55,10 @@
   </div>
 
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+  <script src="./js/logout.js"></script>
   {{/if}}
+
+  <script src="/js/comment.js"></script>
 </body>
 
 </html>
